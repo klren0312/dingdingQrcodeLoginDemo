@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="self_defined_element"></div>
+    <textarea id="js-info" cols="30" rows="10"></textarea>
+    <script src="https://g.alicdn.com/dingding/h5-dingtalk-login/0.21.0/ddlogin.js"></script>
+    <script>
+      // STEP3：在需要的时候，调用 window.DTFrameLogin 方法构造登录二维码，并处理登录成功或失败的回调。
+      window.DTFrameLogin(
+        {
+          id: 'self_defined_element',
+          width: 300,
+          height: 300,
+        },
+        {
+          redirect_uri: encodeURIComponent(''), // 应用配的登录回调地址
+          client_id: '', // 应用的client_id
+          scope: 'openid',
+          response_type: 'code',
+          prompt: 'consent',
+        },
+        async (loginResult) => {
+          document.getElementById('self_defined_element').style.display = 'none'
+          const { redirectUrl, authCode, state } = loginResult
+          const res = await fetch(redirectUrl).then(res => res.json())
+          document.getElementById('js-info').value = JSON.stringify(res.data)
+        },
+        (errorMsg) => {
+          alert(`Login Error: ${errorMsg}`);
+        }
+      );
+    </script>
+  </body>
+</html>

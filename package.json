@@ -1,0 +1,21 @@
+{
+  "name": "dingding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@alicloud/dingtalk": "^2.0.84",
+    "@alicloud/openapi-client": "^0.4.8",
+    "@alicloud/tea-typescript": "^1.8.0",
+    "@alicloud/tea-util": "^1.4.7",
+    "express": "^4.18.2"
+  }
+}
